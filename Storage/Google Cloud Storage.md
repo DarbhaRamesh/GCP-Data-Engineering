@@ -98,3 +98,30 @@ Depends on how frequently we access data
    1. all permissions can be modified at bucket level
 2. Fine Grain
    1. At each object level, we can modify the permissions.
+3. At Project Level
+   1. Using IAM, we can assign role to user/group
+4. At Bucket level
+   1. We can assign roles at bucket level using permissions tab inside a bucket.
+   2. we can assign to other GCP services.
+
+#### Temporary access
+- Using Signed URL
+- we can give access to user who doen't have Google Account as well.
+- URL will be expired after certain time period
+- Max Period - 7 days
+- gsutil signurl -d 10m -u gs://{bucket}/{object}
+
+#### Bucket Retention Policy
+- Min duration for which a bucket cant be deleted or modified.
+
+#### Updated cli commands
+- instead of gsutil use gcloud storage
+- To display in readable format
+  ``` python
+  gcloud config set accessibility/screen_reader false
+  gcloud storage buckets list --format="table[box](name,location)"
+  ```
+#### Auto storage class
+- For Standard and Nearline, the objects will be moved to Coldline and Archive.
+- idea is to reduce the cost and latency.
+- Extra cost for managing this.
